@@ -21,7 +21,7 @@ class WebTasks(TaskSet):
         self.client.delete("/cart")
         self.client.post("/cart", json={"id": item_id, "quantity": 1})
         self.client.get("/basket.html")
-        self.client.post("/orders")
+        self.client.get("/orders")
 
 
 class Web(HttpLocust):

@@ -167,7 +167,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   user-sim:
-    image: nofreewilly/sockshopdemo:load-test
+    image: nofreewilly/sockshop:load-test
     cap_drop:
       - all
     read_only: true

@@ -1,5 +1,5 @@
 FROM golang:1.16
-ENV sourcesdir /go/src/github.com/microservices-demo/user/
+ENV sourcesdir /go/src/github.com/nofreewilly/user/
 ENV MONGO_HOST mytestdb:27017
 ENV HATEAOS user
 ENV USER_DATABASE mongodb

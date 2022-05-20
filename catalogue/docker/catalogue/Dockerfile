@@ -1,13 +1,12 @@
-FROM golang:1.17
+FROM golang:1.16
 
 COPY . /go/src/github.com/microservices-demo/catalogue
 WORKDIR /go/src/github.com/microservices-demo/catalogue
 
-RUN go get -u github.com/FiloSottile/gvt
-RUN gvt restore && \
-    CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app github.com/microservices-demo/catalogue/cmd/cataloguesvc
+#RUN go get -u github.com/FiloSottile/gvt
+#RUN gvt restore && CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app github.com/microservices-demo/catalogue/cmd/cataloguesvc
 
-FROM alpine:3.4
+FROM alpine:3.15
 
 ENV	SERVICE_USER=myuser \
 	SERVICE_UID=10001 \
@@ -18,8 +17,8 @@ RUN	addgroup -g ${SERVICE_GID} ${SERVICE_GROUP} && \
 	adduser -g "${SERVICE_NAME} user" -D -H -G ${SERVICE_GROUP} -s /sbin/nologin -u ${SERVICE_UID} ${SERVICE_USER}
 
 WORKDIR /
-COPY --from=0 /app /app
-COPY images/ /images/
+COPY . ./app/
+COPY . ./images/
 
 RUN	chmod +x /app && \
 	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app /images

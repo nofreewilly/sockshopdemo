@@ -2,14 +2,14 @@ version: '2'
 
 services:
   front-end:
-    image: nofreewilly/sockshop:front-end
+    image: weaveworksdemos/front-end:master-14254f98
     hostname: front-end
     restart: always
     cap_drop:
       - all
     read_only: true
   edge-router:
-    image: nofreewilly/sockshop:edge-router
+    image: weaveworksdemos/edge-router:0.1.1
     ports:
       - '80:80'
       - '8080:8080'
@@ -27,7 +27,7 @@ services:
     hostname: edge-router
     restart: always
   catalogue:
-    image: nofreewilly/sockshop:catalogue
+    image: weaveworksdemos/catalogue:sha-e9e5338
     hostname: catalogue
     restart: always
     cap_drop:
@@ -44,7 +44,7 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_DATABASE=socksdb
   carts:
-    image: nofreewilly/sockshop:carts
+    image: weaveworksdemos/carts:sha-2616b7f
     hostname: carts
     restart: always
     cap_drop:

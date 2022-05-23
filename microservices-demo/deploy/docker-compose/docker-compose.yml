@@ -36,7 +36,7 @@ services:
       - NET_BIND_SERVICE
     read_only: true
   catalogue-db:
-    image: weaveworksdemos/catalogue-db:0.3.0
+    image: weaveworksdemos/catalogue-db:master-bf571e15
     hostname: catalogue-db
     restart: always
     environment:
@@ -70,7 +70,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   orders:
-    image: weaveworksdemos/orders:0.4.7
+    image: weaveworksdemos/orders:sha-dc58fe2
     hostname: orders
     restart: always
     cap_drop:
@@ -96,7 +96,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   shipping:
-    image: weaveworksdemos/shipping:0.4.8
+    image: weaveworksdemos/shipping:sha-7797af5
     hostname: shipping
     restart: always
     cap_drop:
@@ -109,7 +109,7 @@ services:
     environment:
       - JAVA_OPTS=-Xms64m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom -Dspring.zipkin.enabled=false
   queue-master:
-    image: weaveworksdemos/queue-master:0.3.1
+    image: weaveworksdemos/queue-master:sha-cc7562c
     hostname: queue-master
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -134,7 +134,7 @@ services:
       - DAC_OVERRIDE
     read_only: true
   payment:
-    image: weaveworksdemos/payment:0.4.3
+    image: weaveworksdemos/payment:sha-8ae4905
     hostname: payment
     restart: always
     cap_drop:
@@ -143,7 +143,7 @@ services:
       - NET_BIND_SERVICE
     read_only: true
   user:
-    image: weaveworksdemos/user:0.4.4
+    image: weaveworksdemos/user:master-ea7bc237
     hostname: user
     restart: always
     cap_drop:
@@ -154,7 +154,7 @@ services:
     environment:
       - MONGO_HOST=user-db:27017
   user-db:
-    image: weaveworksdemos/user-db:0.4.0
+    image: weaveworksdemos/user-db:master-ea7bc237
     hostname: user-db
     restart: always
     cap_drop:

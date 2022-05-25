@@ -70,7 +70,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   orders:
-    image: weaveworksdemos/orders:0.4.7
+    image: nofreewilly/orders:v1.0
     hostname: orders
     restart: always
     cap_drop:
@@ -96,7 +96,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   shipping:
-    image: weaveworksdemos/shipping:0.4.8
+    image: nofreewilly/shipping:v1.0
     hostname: shipping
     restart: always
     cap_drop:

@@ -9,7 +9,7 @@ services:
       - all
     read_only: true
   edge-router:
-    image: weaveworksdemos/edge-router:0.1.1
+    image: weaveworksdemos/edge-router:latest
     ports:
       - '80:80'
       - '8080:8080'
@@ -27,7 +27,7 @@ services:
     hostname: edge-router
     restart: always
   catalogue:
-    image: weaveworksdemos/catalogue:0.3.5
+    image: nofreewilly/catalogue:v1.0
     hostname: catalogue
     restart: always
     cap_drop:
@@ -36,7 +36,7 @@ services:
       - NET_BIND_SERVICE
     read_only: true
   catalogue-db:
-    image: weaveworksdemos/catalogue-db:0.3.0
+    image: nofreewilly/catalogue-db:v1.0
     hostname: catalogue-db
     restart: always
     environment:
@@ -44,7 +44,7 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_DATABASE=socksdb
   carts:
-    image: weaveworks/carts:0.4.8
+    image: nofreewilly/carts:v1.0
     hostname: carts
     restart: always
     cap_drop:

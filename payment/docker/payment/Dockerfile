@@ -4,10 +4,11 @@ COPY . /go/src/github.com/microservices-demo/payment/
 
 RUN go get -u github.com/FiloSottile/gvt
 RUN cd /go/src/github.com/microservices-demo/payment/ && gvt restore
+#Felher in Zeile 9:  0.603 no required module provides package github.com/microservices-demo/payment/cmd/paymentsvc:
+#go.mod file not found in current directory or any parent directory;
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app github.com/microservices-demo/payment/cmd/paymentsvc/main.go
 
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app github.com/microservices-demo/payment/cmd/paymentsvc
-
-FROM alpine:3.15
+FROM alpine:3.15.2
 
 WORKDIR /
 COPY --from=0 /app /app

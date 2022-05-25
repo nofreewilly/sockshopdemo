@@ -5,28 +5,15 @@ IMAGE=orders
 set -ev
 
 SCRIPT_DIR=$(dirname "$0")
-
-if [[ -z "$GROUP" ]] ; then
-    echo "Cannot find GROUP env var"
-    exit 1
-fi
-
-if [[ -z "$COMMIT" ]] ; then
-    echo "Cannot find COMMIT env var"
-    exit 1
-fi
-
-if [[ "$(uname)" == "Darwin" ]]; then
-    DOCKER_CMD=docker
-else
-    DOCKER_CMD="sudo docker"
-fi
+DOCKER_CMD=docker
 CODE_DIR=$(cd $SCRIPT_DIR/..; pwd)
 echo $CODE_DIR
-$DOCKER_CMD run --rm -v $HOME/.m2:/root/.m2 -v $CODE_DIR:/usr/src/mymaven -w /usr/src/mymaven maven:3.2-jdk-8 mvn -DskipTests package
+# Fehler in Zeile 14: Error response from daemon: the working directory
+# 'C:/Program Files/Git/usr/src/mymaven' is invalid, it needs to be an absolute path.
+# Maven config bereits auf .../orders eingestellt und ausgeführt, trotzdem der Fehler
+#mvn -q -DskipTests package
 
 cp -r $CODE_DIR/docker $CODE_DIR/target/docker/
-cp -r $CODE_DIR/target/*.jar $CODE_DIR/target/docker/${IMAGE}
+cp -r $CODE_DIR/target/*.jar $CODE_DIR/target/docker/orders
 
-REPO=${GROUP}/${IMAGE}
-    $DOCKER_CMD build -t ${REPO}:${COMMIT} $CODE_DIR/target/docker/${IMAGE};
+$DOCKER_CMD build -t nofreewilly/orders:v1.0 $CODE_DIR/target/docker/orders;

@@ -27,7 +27,7 @@ services:
     hostname: edge-router
     restart: always
   catalogue:
-    image: nofreewilly/catalogue:v1.0
+    image: nofreewilly/catalogue:1.0
     hostname: catalogue
     restart: always
     cap_drop:
@@ -134,7 +134,7 @@ services:
       - DAC_OVERRIDE
     read_only: true
   payment:
-    image: weaveworksdemos/payment:0.4.3
+    image: nofreewilly/payment:1.0
     hostname: payment
     restart: always
     cap_drop:

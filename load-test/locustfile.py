@@ -25,6 +25,6 @@ class WebTasks(TaskSet):
 
 
 class Web(HttpUser):
-    task_set = WebTasks
+    tasks = [WebTasks]
     min_wait = 0
     max_wait = 0

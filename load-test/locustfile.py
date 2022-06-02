@@ -1,6 +1,6 @@
 import base64
 
-from locust import HttpLocust, TaskSet, task
+from locust import HttpUser, TaskSet, task
 from random import randint, choice
 
 

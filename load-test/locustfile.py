@@ -24,7 +24,7 @@ class WebTasks(TaskSet):
         self.client.get("/orders")
 
 
-class Web(HttpLocust):
+class Web(HttpUser):
     task_set = WebTasks
     min_wait = 0
     max_wait = 0

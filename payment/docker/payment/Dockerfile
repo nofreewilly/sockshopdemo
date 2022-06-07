@@ -8,7 +8,7 @@ RUN cd /go/src/github.com/microservices-demo/payment/ && gvt restore
 #go.mod file not found in current directory or any parent directory;
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app github.com/microservices-demo/payment/cmd/paymentsvc/main.go
 
-FROM alpine:3.15.2
+FROM ubuntu:22.04
 
 WORKDIR /
 COPY --from=0 /app /app

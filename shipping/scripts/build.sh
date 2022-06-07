@@ -19,5 +19,5 @@ for m in ./docker/*/; do
       --build-arg BUILD_VERSION=$BUILD_VERSION \
       --build-arg BUILD_DATE=$BUILD_DATE \
       --build-arg COMMIT=$COMMIT \
-      -t nofreewilly/shipping:v1.0 $CODE_DIR/$m;
+      -t nofreewilly/shipping:v1.1 $CODE_DIR/$m;
 done;

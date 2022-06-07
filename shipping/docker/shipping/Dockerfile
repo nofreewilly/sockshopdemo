@@ -1,5 +1,5 @@
 FROM weaveworksdemos/msd-java:jre-latest
-
+FROM ubuntu:22.04
 WORKDIR /usr/src/app
 COPY *.jar ./app.jar
 
